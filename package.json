@@ -1,0 +1,23 @@
+{
+  "name": "fx-percentage-display",
+  "version": "0.0.1",
+  "description": "Display question completion percentage",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdexfinancing/completion-percentage.git"
+  },
+  "keywords": [
+    "completion",
+    "percentage"
+  ],
+  "author": "f (x)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fdexfinancing/completion-percentage/issues"
+  },
+  "homepage": "https://github.com/fdexfinancing/completion-percentage#readme"
+}
