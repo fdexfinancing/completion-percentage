@@ -2,7 +2,7 @@ const {calculatePercentage, calculateQuestion} = require('../index');
 const {defaultRuleStruct, rowTemplateStruct, dropdownRuleStruct, uploadRuleStruct} = require('./fixture');
 const allSurvsStruct = require('./all_survs_fixture');
 
-test('PercentageDisplay class should be loaded', () => {
+test('percentage functions should be defined', () => {
   expect(calculatePercentage).toBeDefined();
   expect(calculateQuestion).toBeDefined();
 });

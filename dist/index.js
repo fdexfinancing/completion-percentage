@@ -1,16 +1,23 @@
-const ROW_TEMPLATE_RULE = 'rowTemplateRule';
-const DEFAULT_RULE = 'defaultRule';
-const DROPDOWN_RULE = 'dropdownRule';
-const UPLOAD_RULE = 'uploadRule';
+'use strict';
 
-export function calculatePercentage(mainStructure, data) {
-  const result = [];
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.calculatePercentage = calculatePercentage;
+exports.calculateQuestion = calculateQuestion;
+var ROW_TEMPLATE_RULE = 'rowTemplateRule';
+var DEFAULT_RULE = 'defaultRule';
+var DROPDOWN_RULE = 'dropdownRule';
+var UPLOAD_RULE = 'uploadRule';
 
-  mainStructure.survsAreaList.forEach(area => {
-    let areaPercentual = 0;
-    let questionWeigth = 1 / area.structure.all.length;
+function calculatePercentage(mainStructure, data) {
+  var result = [];
 
-    area.structure.all.forEach(structure => {
+  mainStructure.survsAreaList.forEach(function (area) {
+    var areaPercentual = 0;
+    var questionWeigth = 1 / area.structure.all.length;
+
+    area.structure.all.forEach(function (structure) {
       if (!structure.parent) {
         return;
       }
@@ -21,25 +28,24 @@ export function calculatePercentage(mainStructure, data) {
     if (area.structure.all[0].parent) {
       result.push({
         area: area.name,
-        percentage: (questionWeigth * areaPercentual) * 100
+        percentage: questionWeigth * areaPercentual * 100
       });
     }
-
   });
 
   return result;
 }
 
-export function calculateQuestion(structure, data) {
-  let requiredQuestions = structure.input.filter(question => {
+function calculateQuestion(structure, data) {
+  var requiredQuestions = structure.input.filter(function (question) {
     if (!(question.description_input || question).hasOwnProperty('required_question')) {
       return false;
     }
 
     return question.required_question || question.description_input.required_question;
   });
-  let rule = structure.parent.rule;
-  let requiredQuestionsTotal = structure.parent.min_required || requiredQuestions.length;
+  var rule = structure.parent.rule;
+  var requiredQuestionsTotal = structure.parent.min_required || requiredQuestions.length;
 
   if (rule === DROPDOWN_RULE) {
     requiredQuestionsTotal = requiredQuestions.length;
@@ -47,11 +53,11 @@ export function calculateQuestion(structure, data) {
 
   requiredQuestionsTotal = requiredQuestionsTotal > 0 ? requiredQuestionsTotal : 1;
 
-  let questionWeigth = 1 / requiredQuestionsTotal;
-  let currentPercentage = 0;
+  var questionWeigth = 1 / requiredQuestionsTotal;
+  var currentPercentage = 0;
 
-  requiredQuestions.forEach(question => {
-    let questionArr = question.model.split('$index.');
+  requiredQuestions.forEach(function (question) {
+    var questionArr = question.model.split('$index.');
 
     if (questionArr.length === 1) {
       questionArr = question.model.split('.');
@@ -61,13 +67,13 @@ export function calculateQuestion(structure, data) {
       if (rule === ROW_TEMPLATE_RULE) {
         currentPercentage = 0;
 
-        for(let i = 1; i <= structure.parent.min_required; i++) {
+        for (var i = 1; i <= structure.parent.min_required; i++) {
 
           if (!data[questionArr[0] + i]) {
             return;
           }
 
-          let questionData = data[questionArr[0] + i][questionArr[1]];
+          var questionData = data[questionArr[0] + i][questionArr[1]];
 
           if (isValidQuestion(rule, questionData, question)) {
             currentPercentage += questionWeigth;
@@ -75,15 +81,15 @@ export function calculateQuestion(structure, data) {
         }
       } else {
 
-        let questionData = data[questionArr[0]] ? data[questionArr[0]][questionArr[1]] : false;
+        var _questionData = data[questionArr[0]] ? data[questionArr[0]][questionArr[1]] : false;
 
-        if (!questionData) {
+        if (!_questionData) {
           return false;
         }
 
-        questionData = data[questionArr[0]][(question.description_input || question).model.split('.')[1]];
+        _questionData = data[questionArr[0]][(question.description_input || question).model.split('.')[1]];
 
-        if (isValidQuestion(rule, questionData, question)) {
+        if (isValidQuestion(rule, _questionData, question)) {
           currentPercentage += questionWeigth;
         }
       }
@@ -118,7 +124,7 @@ function showPercentage(rule, percentage) {
       return percentage;
     }
 
-    return  0;
+    return 0;
   }
 
   return percentage;

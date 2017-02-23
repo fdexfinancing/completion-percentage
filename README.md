@@ -1,4 +1,4 @@
-# Package to display question completion percentual
+# Package to display surv completion percentual
 
 ## JSON structure and rules description
 
@@ -123,3 +123,17 @@ Upload Template
       ]
   }
   ```
+
+### Response
+```
+[
+  {"area": "Dados Iniciais", "percentage": 25},
+  {"area": "Análise Quantitativa", "percentage": 25},
+  {"area": "Análise Qualitativa", "percentage": 0},
+  {"area": "Documentos", "percentage": 0}
+]
+```
+
+#### Observations
+
+To see entries data structure, please read the tests
