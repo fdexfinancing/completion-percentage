@@ -1,6 +1,6 @@
 {
   "name": "fx-surv-percentage-calculator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Display surv completion percentage",
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,6 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+
   }
 }
