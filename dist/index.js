@@ -15,7 +15,8 @@ function calculatePercentage(mainStructure, data) {
 
   mainStructure.survsAreaList.forEach(function (area) {
     var areaPercentual = 0;
-    var questionWeigth = 1 / area.structure.all.length;
+    var areaTotal = area.structure.all.length > 0 ? area.structure.all.length : 1;
+    var questionWeigth = 1 / areaTotal;
 
     area.structure.all.forEach(function (structure) {
       if (!structure.parent) {
