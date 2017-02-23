@@ -8,7 +8,8 @@ export function calculatePercentage(mainStructure, data) {
 
   mainStructure.survsAreaList.forEach(area => {
     let areaPercentual = 0;
-    let questionWeigth = 1 / area.structure.all.length;
+    let areaTotal = area.structure.all.length > 0 ? area.structure.all.length : 1;
+    let questionWeigth = 1 / areaTotal;
 
     area.structure.all.forEach(structure => {
       if (!structure.parent) {
