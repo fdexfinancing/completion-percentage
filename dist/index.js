@@ -29,7 +29,7 @@ function calculatePercentage(mainStructure, data, options) {
     if (area.structure.all[0].parent) {
       result.push({
         area: area.name,
-        percentage: questionWeigth * areaPercentual * 100
+        percentage: Number((questionWeigth * areaPercentual * 100).toFixed(options.decimal))
       });
     }
   });
@@ -115,14 +115,6 @@ function isValidQuestion(rule, data, question) {
   }
 
   return false;
-}
-
-function decimalPercentage(value, decimal) {
-  if (value <= 0) {
-    return 0;
-  }
-
-  return Number(value.toFixed(decimal));
 }
 
 window.module = window.module || {};
