@@ -16,7 +16,14 @@ function calculatePercentage(mainStructure, data, options) {
   mainStructure.survsAreaList.forEach(function (area) {
     var areaPercentual = 0;
     var areaTotal = area.structure.all.length > 0 ? area.structure.all.length : 1;
-    var questionWeigth = 1 / areaTotal;
+    var requiredQuestions = area.structure.all.filter(function (summary) {
+      if (!summary.parent) {
+        return;
+      }
+
+      return summary.parent.rule !== undefined;
+    });
+    var questionWeigth = 1 / (requiredQuestions.length || areaTotal);
 
     area.structure.all.forEach(function (structure) {
       if (!structure.parent) {
@@ -37,23 +44,22 @@ function calculatePercentage(mainStructure, data, options) {
   return result;
 }
 
-function calculateQuestion(structure, data) {
-  var requiredQuestions = structure.input.filter(function (question) {
+function getRequiredQuestions(questions) {
+  return questions.filter(function (question) {
     if (!(question.description_input || question).hasOwnProperty('required_question')) {
       return false;
     }
 
     return question.required_question || question.description_input.required_question;
   });
+}
+
+function calculateQuestion(structure, data) {
+  var requiredQuestions = getRequiredQuestions(structure.input);
   var rule = structure.parent.rule;
   var requiredQuestionsTotal = structure.parent.min_required || requiredQuestions.length;
 
-  if (rule === DROPDOWN_RULE) {
-    requiredQuestionsTotal = requiredQuestions.length;
-  }
-
   requiredQuestionsTotal = requiredQuestionsTotal > 0 ? requiredQuestionsTotal : 1;
-
   var questionWeigth = 1 / requiredQuestionsTotal;
   var currentPercentage = 0;
 
@@ -101,7 +107,7 @@ function calculateQuestion(structure, data) {
     }
   });
 
-  return currentPercentage;
+  return currentPercentage > 1 ? 1 : currentPercentage;
 }
 
 function isValidQuestion(rule, data, question) {
