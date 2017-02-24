@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "compile": "babel --presets es2015,stage-0 index.js -d dist/",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",

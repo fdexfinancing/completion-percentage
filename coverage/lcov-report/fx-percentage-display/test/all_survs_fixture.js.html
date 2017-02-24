@@ -1,0 +1,3059 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for fx-percentage-display/test/all_survs_fixture.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">fx-percentage-display/test</a> all_survs_fixture.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = {
+   "result":{
+      "id":1,
+      "title":"Questionário qualitativo",
+      "observation":"IMPORTANTE: não é preciso responder todas as perguntas de uma única vez, para salvar as suas respostas basta \"clicar\" em \"SALVAR\" no final da página.",
+      "created_at":"2016-08-23T03:34:53.837Z",
+      "updated_at":"2016-08-23T03:34:53.837Z",
+      "is_active":true,
+      "survsAreaList":[
+         {
+            "id":1,
+            "id_survs":1,
+            "name":"Resumo",
+            "description":"&lt;h2&gt;Certificado F(x)&lt;/h2&gt; &lt;p&gt;O certificado F(x) foi criado para que as possibilidades de crédito sejam ampliadas ao máximo de acordo com as necessidades da empresa. Quanto maior a qualidade das informações ao final da avaliação, maiores as chances de chegarmos ao financiador certo&lt;/p&gt;",
+            "state":"summary",
+            "url":"resumo",
+            "order":1,
+            "survsQuestionList":[
+&nbsp;
+            ],
+            "structure":{
+               "all":[
+                  {
+                     "order":1
+                  }
+               ]
+            }
+         },
+         {
+            "id":2,
+            "id_survs":1,
+            "name":"Dados Iniciais",
+            "description":"&lt;h2&gt;Dados Iniciais&lt;/h2&gt; &lt;p&gt;As informações descritas abaixo serão utilizadas no nosso algoritmo para verificar quantos potenciais financiadores existem para a operação que você deseja concluir&lt;/p&gt;",
+            "state":"data",
+            "url":"dados-iniciais",
+            "order":2,
+            "survsQuestionList":[
+&nbsp;
+            ],
+            "structure":{
+               "all":[
+                  {
+                     "parent":{
+                        "col":"col-md-12",
+                        "label":"&lt;p&gt;Como serão utilizados os recursos a serem captados pela empresa? Relacionar utilização e valores.&lt;/p&gt;",
+                        "type":"row_template",
+                        "btn_title":"finalidade",
+                        "min_rows":2,
+                        "min_required": 1,
+                        "rule": "rowTemplateRule",
+                        "example":{
+                           "title":"",
+                           "content":"Utilize os campos ao lado para descrever, de uma forma breve, o valor e a finalidade da captação."
+                        }
+                     },
+                     "input":[
+                        {
+                           "col":"col-md-2",
+                           "label":"Recursos",
+                           "type":"select",
+                           "model":"utilization_$index.resource",
+                           "required_question": true,
+                           "option":{
+                              "src":"resources",
+                              "values":[
+                                 {
+                                    "index":1,
+                                    "display":"Capital de giro"
+                                 },
+                                 {
+                                    "index":2,
+                                    "display":"Pagamento de dívidas que estão vencendo"
+                                 },
+                                 {
+                                    "index":3,
+                                    "display":"Pré-pagamento de dívidas muito onerosas"
+                                 },
+                                 {
+                                    "index":4,
+                                    "display":"Investimento em expansão"
+                                 },
+                                 {
+                                    "index":5,
+                                    "display":"Investimento em uma nova planta"
+                                 }
+                              ]
+                           }
+                        },
+                        {
+                           "col":"col-md-3",
+                           "label":"Valor",
+                           "type":"number",
+                           "decimal":2,
+                           "left_info":"R$",
+                           "model":"utilization_$index.value",
+                           "required_question": true,
+                        },
+                        {
+                           "col":"col-md-3",
+                           "label":"Informação",
+                           "type":"text",
+                           "model":"utilization_$index.info",
+                           "required_question": true,
+                        }
+                     ],
+                     "order":2
+                  },
+                  {
+                     "parent":{
+                        "col":"col-md-12",
+                        "force_label":true,
+                        "label":"&lt;h2&gt;Descrição Da empresa e Performance Recente&lt;/h2&gt; &lt;p&gt;Apresentar resumidamente a sua empresa incluindo informações como: &lt;/p&gt;",
+                        "rule": "defaultRule"
+                     },
+                     "input":[
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; O histórico da empresa e um resumo de suas atividades e produtos/serviços.&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_description",
+                           "required_question": true,
+                           "min_length": 200,
+                           "example":{
+                              "title":"Exemplo de como responser",
+                              "content":"Fundada em 1990 na cidade de São Paulo/SP, a Empresa Exemplo atua desde sua origem na fabricação de móveis para escritório. Atualmente, a empresa conta com 2 fábricas com área construída de 20.000 m², bem como 5 lojas próprias nas regiões Sul e Sudeste, suas regiões de maior atuação."
+                           }
+                        },
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; Descrição das principais linhas de produtos destacando-se também a sua relevância sobre as receitas (% do total).&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_description_products",
+                           "required_question": true,
+                           "min_length": 200,
+                           "example":{
+                              "title":"Exemplo de como responser",
+                              "content":"A Empresa Exemplo conta com um portfolio com 150 produtos, com destaque para estações de trabalho (responsáveis por 35% da receita), armários (20% da receita) e mesas de reunião (15% da receita)."
+                           }
+                        },
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; Quais setores que a sua empresa atende.&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_description_sector",
+                           "required_question": true,
+                           "min_length": 200,
+                           "example":{
+                              "title":"Exemplo de como responser",
+                              "content":"Os principais clientes da Empresa Exemplo são empresas privadas com mais de 50 funcionários, responsáveis por mais da metade do faturamento da companhia. Outro segmento de destaque são os órgãos públicos, que correspondem a 30% das receitas."
+                           }
+                        },
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; Quais as suas vantagens competitivas em relação aos seus concorrentes.&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_description_advantages",
+                           "required_question": true,
+                           "min_length": 200,
+                           "example":{
+                              "title":"Exemplo de como responser",
+                              "content":"A Empresa Exemplo é uma das maiores do segmento em sua região, e sua escala permite obter condições de negociação junto a seus fornecedores. Além disso, seu parque fabril foi renovado recentemente, dando flexibilidade ao processo produtivo e permitindo diversas opções de personalização."
+                           }
+                        }
+                     ],
+                     "order":3
+                  },
+                  {
+                     "parent":{
+                        "col":"col-md-12",
+                        "force_label":true,
+                        "label":"&lt;p&gt;Detalhar a performance ao longo dos últimos 2 anos, com foco nos:&lt;/p&gt;"
+                     },
+                     "input":[
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; Fatores responsáveis pela variação das receitas.&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_performance",
+                           "example":{
+                              "title":"Exemplo de como responder",
+                              "content":"Receitas caíram em função da perda de um cliente estratégico. Queda foi compensada pelo aumento da participação no mercado de pequenas empresas, fruto de nova estratégica comercial."
+                           }
+                        },
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; Fatores responsáveis pela variação da margem operacional.&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_performance_margin",
+                           "example":{
+                              "title":"Exemplo de como responder",
+                              "content":"Custos foram reduzidos em 6% devido à modernização do processo produtivo e melhoria no layout da fábrica."
+                           }
+                        },
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; Fatores responsáveis pela variação na posição de caixa da empresa.&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_performance_pos",
+                           "example":{
+                              "title":"Exemplo de como responder",
+                              "content":"Abertura de duas novas lojas levou ao aumento nas despesas com vendas, em função da contratação de nova equipe."
+                           }
+                        }
+                     ],
+                     "order":4
+                  },
+                  {
+                     "parent":{
+                        "col":"col-md-12",
+                        "force_label":true,
+                        "label":"&lt;p&gt;Em termos de receitas, de resultados operacionais e geração de caixa:&lt;/p&gt;"
+                     },
+                     "input":[
+                        {
+                           "col":"col-md-8",
+                           "label":"&lt;span class=\"primary-blue\"&gt; O que é possível esperar ao final do ano corrente? Qual a expectativa de receita e margens para este exercício?&lt;/span&gt;",
+                           "type":"textarea",
+                           "model":"company_projection"
+                        }
+                     ],
+                     "order":5
+                  }
+               ]
+            }
+         },
+         {
+            "id":5,
+            "id_survs":1,
+            "name":"Análise Quantitativa",
+            "description":"&lt;h2&gt;Análise Quantitativa&lt;/h2&gt; &lt;p&gt;Dado que estamos em contato constante com uma grande base de financiadores, estimamos quais os fatores quantitativos tornam uma operação de crédito mais atrativa para eles. Nosso objetivo aqui é fazer com que sua empresa se apresente da forma mais atrativa, e por isso sugerimos alguns aspectos qualitativos comuns às boas oportunidades.&lt;/p&gt;",
+            "state":"quantitative",
+            "url":"analise-quantitativa",
+            "order":4,
+            "survsQuestionList":[
+&nbsp;
+            ],
+            "structure":{
+               "all":[
+                  {
+                     "parent":{
+                        "col":"col-md-12",
+                        "label":"&lt;h3&gt;Clientes&lt;/h3&gt;&lt;p&gt;Quanto os seus 8 maiores clientes representaram do total das receitas da empresa no último ano?&lt;/p&gt;",
+                        "type":"row_template",
+                        "btn_title":"cliente",
+                        "min_required": 8,
+                        "min_rows":2,
+                        "rule": "rowTemplateRule"
+                     },
+                     "input":[
+                        {
+                           "col":"col-md-4",
+                           "label":"Cliente",
+                           "type":"text",
+                           "model":"customer_abc_$index.customer",
+                           "required_question": true
+                        },
+                        {
+                           "col":"col-md-3",
+                           "label":"Valor",
+                           "type":"number",
+                           "decimal":2,
+                           "right_info":"%",
+                           "model":"customer_abc_$index.value",
+                           "required_question": true
+                        }
+                     ],
+                     "order":2
+                  },
+                  {
+                     "parent":{
+                        "col":"col-md-12",
+                        "label":"&lt;h3&gt;Fornecedores&lt;/h3&gt;&lt;p&gt;Quanto os seus 8 maiores fornencedores representaram do total das compras da empresa no último ano?&lt;/p&gt;",
+                        "type":"row_template",
+                        "btn_title":"fornecedor",
+                        "min_required": 8,
+                        "min_rows":2,
+                        "rule": "rowTemplateRule"
+                     },
+                     "input":[
+                        {
+                           "col":"col-md-4",
+                           "label":"Fornecedor",
+                           "type":"text",
+                           "model":"provider_abc_$index.provider",
+                           "required_question": true
+                        },
+                        {
+                           "col":"col-md-3",
+                           "label":"Valor",
+                           "type":"number",
+                           "decimal":2,
+                           "right_info":"%",
+                           "model":"provider_abc_$index.value",
+                           "required_question": true
+                        }
+                     ],
+                     "order":3
+                  }
+               ]
+            }
+         },
+         {
+            "id":4,
+            "id_survs":1,
+            "name":"Análise Qualitativa",
+            "description":"&lt;h2&gt;Análise Qualitativa&lt;/h2&gt; &lt;p&gt;Dado que estamos em contato constante com uma grande base de financiadores, estimamos quais os fatores qualitativos tornam uma operação de crédito mais atrativa para eles. Nosso objetivo aqui é fazer com que sua empresa se apresente da forma mais atrativa, e por isso sugerimos alguns aspectos qualitativos comuns às boas oportunidades.&lt;/p&gt;",
+            "state":"qualitative",
+            "url":"analise-qualitativa",
+            "order":5,
+            "survsQuestionList":[
+&nbsp;
+            ],
+            "structure":{
+               "all":[
+                  {
+                     "parent":{
+                        "col":"col-md-8",
+                        "label":"&lt;span class=\"icon\"&gt;&lt;i class=\"fa fa-line-chart\"&gt;&lt;/i&gt;&lt;/span&gt;&lt;span class=\"primary-blue\"&gt;Receitas, Crescimento e Oportunidades&lt;/span&gt;",
+                        "placeholder":"Favor escolha NO MÁXIMO 2 FATORES que melhor represente sua empresa.",
+                        "type":"dropdown",
+                        "min_required": 1,
+                        "min_length": 120,
+                        "rule": "dropdownRule"
+                     },
+                     "input":[
+                        {
+                           "label":"Que as suas receitas não são tão afetadas pela atividade econômica.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.economic_activity",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.economic_activity_explanation",
+                              "ng-if":"vm.$1.revenue_situation.economic_activity"
+                           }
+                        },
+                        {
+                           "label":"Que o seu negócio é pouco cíclico.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.bit_cyclic",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.bit_cyclic_explanation",
+                              "ng-if":"vm.$1.revenue_situation.bit_cyclic"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa possui contratos de longo prazo e backlog.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.long_term_contract",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.long_term_contract_explanation",
+                              "ng-if":"vm.$1.revenue_situation.long_term_contract"
+                           }
+                        },
+                        {
+                           "label":"Que a recorrência das suas receitas é grande.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.high_recurrence",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.high_recurrence_explanation",
+                              "ng-if":"vm.$1.revenue_situation.high_recurrence"
+                           }
+                        },
+                        {
+                           "label":"Que nos próximos anos as suas receitas irão apresentar um crescimento expressivo (maior que nos últimos 3 anos).",
+                           "type":"checkbox",
+                           "model":"revenue_situation.growth",
+                           "textarea":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.growth_explanation",
+                              "ng-if":"vm.$1.revenue_situation.growth"
+                           }
+                        },
+                        {
+                           "label":"Que o seu produto é crítico para a atividade fim dos seus clientes.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.critical_products",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.critical_products_explanation",
+                              "ng-if":"vm.$1.revenue_situation.critical_products"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa possui uma grande capacidade de ajustar os preços.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.flexible_prices",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.flexible_prices_explanation",
+                              "ng-if":"vm.$1.revenue_situation.flexible_prices"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa possui uma grande diversidade de receitas e uma baixa concentração de clientes.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.revenue_diversity",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.revenue_diversity_explanation",
+                              "ng-if":"vm.$1.revenue_situation.revenue_diversity",
+                              "example":{
+                                 "title":"Exemplo de como responser",
+                                 "content":"Maior cliente foi responsável por 5% das receitas da empresa, que conta hoje com mais de 1.000 clientes ativos."
+                              }
+                           }
+                        },
+                        {
+                           "label":"Que a sua concorrência é limitada e vai continuar assim porque você possui grandes vantagens competitivas.",
+                           "type":"checkbox",
+                           "model":"revenue_situation.competitive_advantage",
+                           "description_input":{
+                              "label":"",
+                              "type":"textarea",
+                              "model":"revenue_situation.competitive_advantage_explanation",
+                              "ng-if":"vm.$1.revenue_situation.competitive_advantage"
+                           }
+                        }
+                     ],
+                     "order":1
+                  },
+                  {
+                     "parent":{
+                        "col":"col-md-8",
+                        "label":"&lt;span class=\"icon\"&gt;&lt;i class=\"fa fa-bar-chart-o\"&gt;&lt;/i&gt;&lt;/span&gt;&lt;span class=\"primary-blue\"&gt;Margens &amp; Indicadores Operacionais&lt;/span&gt;",
+                        "placeholder":"Favor escolha NO MÁXIMO 2 FATORES que melhor resumem a situação da empresa.",
+                        "type":"dropdown",
+                        "min_required": 1,
+                        "min_length": 120,
+                        "rule": "dropdownRule"
+                     },
+                     "input":[
+                        {
+                           "label":"Que, ao longo dos ciclos, a sua empresa tem operado com margens elevadas (Ebitda em torno de 15% ou superior).",
+                           "type":"checkbox",
+                           "model":"operating_indicator.high_margin",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.high_margin_explanation",
+                              "ng-if":"vm.$1.operating_indicator.high_margin"
+                           }
+                        },
+                        {
+                           "label":"Que as margens da sua empresa são estáveis e vão continuar assim.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.stable_margin",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.stable_margin_explanation",
+                              "ng-if":"vm.$1.operating_indicator.stable_margin"
+                           }
+                        },
+                        {
+                           "label":"Que a margem Ebitda da sua empresa deverá aumentar pelo crescimento das vendas.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.sell_increase",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.sell_increase_explanation",
+                              "ng-if":"vm.$1.operating_indicator.sell_increase"
+                           }
+                        },
+                        {
+                           "label":"Que a margem Ebitda da sua empresa deverá aumentar pelo corte de despesas.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.cut_cost",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.cut_cost_explanation",
+                              "ng-if":"vm.$1.operating_indicator.cut_cost"
+                           }
+                        },
+                        {
+                           "label":"Que o seu ciclo de capital de giro é relativamente curto.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.short_cycle",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.short_cycle_explanation",
+                              "ng-if":"vm.$1.operating_indicator.short_cycle"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa opera com capital de giro positivo.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.positive_working_capital",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.positive_working_capital_explanation",
+                              "ng-if":"vm.$1.operating_indicator.positive_working_capital"
+                           }
+                        },
+                        {
+                           "label":"Que os seus custos fixos são proporcionalmente baixos.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.low_cost",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.low_cost_explanation",
+                              "ng-if":"vm.$1.operating_indicator.low_cost"
+                           }
+                        },
+                        {
+                           "label":"Que os seus resultados foram afetados por fatores pontuais e irão melhorar rapidamente.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.improve_result",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.improve_result_explanation",
+                              "ng-if":"vm.$1.operating_indicator.improve_result"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa é dominante, líder, \"top 5\" no seu nicho de atuação.",
+                           "type":"checkbox",
+                           "model":"operating_indicator.top_five",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"operating_indicator.top_five_explanation",
+                              "ng-if":"vm.$1.operating_indicator.top_five"
+                           }
+                        }
+                     ],
+                     "order":2
+                  },
+                  {
+                     "parent":{
+                        "col":"col-md-8",
+                        "label":"&lt;span class=\"icon\"&gt;&lt;i class=\"fa fa-usd\"&gt;&lt;/i&gt;&lt;/span&gt;&lt;span class=\"primary-blue\"&gt;Capital &amp; Crédito&lt;/span&gt;",
+                        "placeholder":"Favor escolha NO MÁXIMO 2 FATORES que melhor resumem a situação da empresa.",
+                        "type":"dropdown",
+                        "min_required": 1,
+                        "min_length": 120,
+                        "rule": "dropdownRule"
+                     },
+                     "input":[
+                        {
+                           "label":"Que a sua empresa possui um rating de crédito superior a BB+ (realizado por agência de rating).",
+                           "type":"checkbox",
+                           "model":"capital_situation.credit_rating",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.credit_rating_explanation",
+                              "ng-if":"vm.$1.capital_situation.credit_rating"
+                           }
+                        },
+                        {
+                           "label":"Que a bancarização da sua empresa é de qualidade (inclui grandes bancos).",
+                           "type":"checkbox",
+                           "model":"capital_situation.quality_bancarizacion",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.quality_bancarizacion_explanation",
+                              "ng-if":"vm.$1.capital_situation.quality_bancarizacion"
+                           }
+                        },
+                        {
+                           "label":"Que o custo médio do seu passivo bancário é baixo (taxa inferior ou igual a 20% a.a.).",
+                           "type":"checkbox",
+                           "model":"capital_situation.low_cost",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.low_cost_explanation",
+                              "ng-if":"vm.$1.capital_situation.low_cost"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa não enfrenta problemas para refinanciar dívidas de curto prazo.",
+                           "type":"checkbox",
+                           "model":"capital_situation.debit_short_term",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.debit_short_term_explanation",
+                              "ng-if":"vm.$1.capital_situation.debit_short_term"
+                           }
+                        },
+                        {
+                           "label":"Que os bancos têm refinanciado as suas dívidas.",
+                           "type":"checkbox",
+                           "model":"capital_situation.refinanced_debit",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.refinanced_debit_explanation",
+                              "ng-if":"vm.$1.capital_situation.refinanced_debit"
+                           }
+                        },
+                        {
+                           "label":"Que existe a possibilidade de utilizar-se outros produtos financeiros (ACC, M&amp;A, desconto de recebíveis, etc.)",
+                           "type":"checkbox",
+                           "model":"capital_situation.other_financing_products",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.other_financing_products_explanation",
+                              "ng-if":"vm.$1.capital_situation.other_financing_products"
+                           }
+                        },
+                        {
+                           "label":"Que recentemente a sua empresa recebeu um aporte de capital, o que possibilita mensurar o valor da companhia.",
+                           "type":"checkbox",
+                           "model":"capital_situation.capital_contribution",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.capital_contribution_explanation",
+                              "ng-if":"vm.$1.capital_situation.capital_contribution"
+                           }
+                        },
+                        {
+                           "label":"Que a sua gestão é profissionalizada.",
+                           "type":"checkbox",
+                           "model":"capital_situation.profissional_management",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.profissional_management_explanation",
+                              "ng-if":"vm.$1.capital_situation.profissional_management"
+                           }
+                        },
+                        {
+                           "label":"Que a sua necessidade de investimentos em ativo imobilizado é reduzida.",
+                           "type":"checkbox",
+                           "model":"capital_situation.low_investiment_need",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.low_investiment_need_explanation",
+                              "ng-if":"vm.$1.capital_situation.low_investiment_need"
+                           }
+                        },
+                        {
+                           "label":"Que um financiamento longo resolveria a situação da sua empresa.",
+                           "type":"checkbox",
+                           "model":"capital_situation.long_financing",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.long_financing_explanation",
+                              "ng-if":"vm.$1.capital_situation.long_financing"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa precisa de dinheiro para crescer.",
+                           "type":"checkbox",
+                           "model":"capital_situation.need_money",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.need_money_explanation",
+                              "ng-if":"vm.$1.capital_situation.need_money"
+                           }
+                        },
+                        {
+                           "label":"Que a sua empresa está em processo de reestruturação e que o mesmo já surtiu resultados mensuráveis.",
+                           "type":"checkbox",
+                           "model":"capital_situation.restructuring_process",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.restructuring_process_explanation",
+                              "ng-if":"vm.$1.capital_situation.restructuring_process"
+                           }
+                        },
+                        {
+                           "label":"Que outras empresas, com situação financeira mais sólida, poderiam ser garantidoras da operação.",
+                           "type":"checkbox",
+                           "model":"capital_situation.guarantor_company",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.guarantor_company_explanation",
+                              "ng-if":"vm.$1.capital_situation.guarantor_company"
+                           }
+                        },
+                        {
+                           "label":"Que os acionistas, com bens suficientes para cobrir a operação, poderiam ser avalistas.",
+                           "type":"checkbox",
+                           "model":"capital_situation.guarantor_shareholder",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.guarantor_shareholder_explanation",
+                              "ng-if":"vm.$1.capital_situation.guarantor_shareholder"
+                           }
+                        },
+                        {
+                           "label":"Se a sua empresa esta em recuperação judicial, que o plano da RJ já foi aprovado e homologado.",
+                           "type":"checkbox",
+                           "model":"capital_situation.rj_plan",
+                           "description_input":{
+                              "label":"Explicação",
+                              "type":"textarea",
+                              "model":"capital_situation.rj_plan_explanation",
+                              "ng-if":"vm.$1.capital_situation.rj_plan"
+                           }
+                        }
+                     ],
+                     "order":3
+                  },
+                  {
+                     "parent":{
+                        "col":"col-md-12",
+                        "label":"&lt;span class=\"icon\"&gt;&lt;i class=\"fa fa-globe\"&gt;&lt;/i&gt;&lt;/span&gt;&lt;span class=\"primary-blue\"&gt;Preencha este campo caso entenda que existem outros fatores, não mencionados anteriormente, que devem ser incluídos:&lt;/span&gt;"
+                     },
+                     "input":[
+                        {
+                           "col":"col-md-8",
+                           "label":"",
+                           "type":"textarea",
+                           "model":"other_situation"
+                        }
+                     ],
+                     "order":4
+                  }
+               ]
+            }
+         },
+         {
+            "id":7,
+            "id_survs":1,
+            "name":"Documentos",
+            "description":"&lt;h2&gt;Documentos&lt;/h2&gt; &lt;p&gt;Os documentos listados abaixo são requeridos pelos financiadores participantes da plataforma na maior parte dos casos. Para facilitar o processo de análise das partes envolvidas na listagem, favor realizar upload abaixo&lt;/p&gt;",
+            "state":"survDocuments",
+            "url":"documentos",
+            "order":7,
+            "survsQuestionList":[
+&nbsp;
+            ],
+            "structure":{
+               "all":[
+                  {
+                     "parent":{
+                        "col":"col-md-8",
+                        "label":"",
+                        "type":"upload_list",
+                        "rule": "uploadRule"
+                     },
+                     "input":[
+                        {
+                           "label":"Apresentação Institucional da Empresa",
+                           "type":"upload",
+                           "model":"documents.company_presentation",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"35"
+                        },
+                        {
+                           "label":"Mini currículo dos principais executivos",
+                           "type":"upload",
+                           "model":"documents.curriculum_board",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"29"
+                        },
+                        {
+                           "label":"Última versão do Contrato Social / Estatuto Social",
+                           "type":"upload",
+                           "model":"documents.social_contract",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"30"
+                        },
+                        {
+                           "label":"Balanço Patrimonial de ",
+                           "type":"upload",
+                           "model":"documents.balance_sheet_1",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"1",
+                           "position":"0"
+                        },
+                        {
+                           "label":"Balanço Patrimonial de ",
+                           "type":"upload",
+                           "model":"documents.balance_sheet_1",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"1",
+                           "position":"1"
+                        },
+                        {
+                           "label":"Balanço Patrimonial de ",
+                           "type":"upload",
+                           "model":"documents.balance_sheet_1",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"1",
+                           "position":"2"
+                        },
+                        {
+                           "label":"DRE de ",
+                           "type":"upload",
+                           "model":"documents.balance_sheet_2",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"2",
+                           "position":"0"
+                        },
+                        {
+                           "label":"DRE de ",
+                           "type":"upload",
+                           "model":"documents.balance_sheet_2",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"2",
+                           "position":"1"
+                        },
+                        {
+                           "label":"DRE de ",
+                           "type":"upload",
+                           "model":"documents.balance_sheet_2",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"2",
+                           "position":"2"
+                        },
+                        {
+                           "label":"Abertura do endividamento bancário (incluir fonte, valor, taxa, prazo, sistema de amortização)",
+                           "type":"upload",
+                           "model":"documents.bank_debit",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"24"
+                        },
+                        {
+                           "label":"Faturamento mensal dos últimos 36 meses",
+                           "type":"upload",
+                           "model":"documents.revenues",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"23"
+                        },
+                        {
+                           "label":"Declaração de Imposto de Renda (Pessoa Jurídica)",
+                           "type":"upload",
+                           "model":"documents.ir_decalration",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"32"
+                        },
+                        {
+                           "label":"Declaração de Imposto de Renda (Sócios)",
+                           "type":"upload",
+                           "model":"documents.ir_decalration_partners",
+                           "required_question": true,
+                           "option":[
+                              {
+                                 "label":"Documento enviado",
+                                 "value":true
+                              },
+                              {
+                                 "label":"Fazer upload",
+                                 "value":false
+                              }
+                           ],
+                           "id_document_type":"33"
+                        }
+                     ],
+                     "order":1
+                  }
+               ]
+            }
+         }
+      ]
+   }
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 23 2017 23:12:47 GMT-0300 (BRT)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
