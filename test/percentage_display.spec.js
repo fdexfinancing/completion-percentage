@@ -2,12 +2,12 @@ const {calculatePercentage, calculateQuestion} = require('../index');
 const {defaultRuleStruct, rowTemplateStruct, dropdownRuleStruct, uploadRuleStruct} = require('./fixture');
 const allSurvsStruct = require('./all_survs_fixture');
 
-test('percentage functions should be defined', () => {
+test('functions should be defined', () => {
   expect(calculatePercentage).toBeDefined();
   expect(calculateQuestion).toBeDefined();
 });
 
-test('Should get a percentage display for DefaultRule', () => {
+test('return int 1 when evaluate DefaultRule', () => {
     let data = {
       new_situation: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       other_situation: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
@@ -16,15 +16,15 @@ test('Should get a percentage display for DefaultRule', () => {
     expect(calculateQuestion(defaultRuleStruct, data)).toEqual(1);
 });
 
-test('Should get 0% display for DefaultRule', () => {
+test('return float 0.5 when evaluate DefaultRule', () => {
     let data = {
       new_situation: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     };
 
-    expect(calculateQuestion(defaultRuleStruct, data)).toEqual(0);
+    expect(calculateQuestion(defaultRuleStruct, data)).toEqual(0.5);
 });
 
-test('Should get percentage for RowTemplateRule', () => {
+test('return int 1 when evaluate RowTemplateRule', () => {
   let data = {
     'customer_abc_1.customer': {customer: 10 },
     'customer_abc_1':{value: 10},
@@ -40,7 +40,7 @@ test('Should get percentage for RowTemplateRule', () => {
   expect(calculateQuestion(rowTemplateStruct, data)).toEqual(1);
 });
 
-test('Should get granular percentage for RowTemplateRule', () => {
+test('return float 0.75 when evaluate RowTemplateRule', () => {
   let data = {
     'customer_abc_1': {customer: 10} ,
     'customer_abc_1':{value: 10},
@@ -54,7 +54,7 @@ test('Should get granular percentage for RowTemplateRule', () => {
   expect(calculateQuestion(rowTemplateStruct, data)).toEqual(0.75);
 });
 
-test('Should get hundred percent of DropdownRule', () => {
+test('return int 1 when evaluate DropDownRule', () => {
   let data = { "revenue_situation":{"economic_activity":true,"bit_cyclic":true,
   "economic_activity3": true, "economic_activity4": true, "economic_activity_explanation":'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',"bit_cyclic_explanation":'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', "economic_activity3_explanation":'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 "economic_activity4_explanation":'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},"other_situation":"YTeste"};
@@ -62,13 +62,13 @@ test('Should get hundred percent of DropdownRule', () => {
   expect(calculateQuestion(dropdownRuleStruct, data)).toEqual(1);
 });
 
-test('Should get 75 percent of DropdownRule', () => {
+test('return float 0.5 when evaluate DropdownRule', () => {
   let data = { "revenue_situation":{"economic_activity":true,"bit_cyclic":true,"economic_activity_explanation":'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',"bit_cyclic_explanation":'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},"other_situation":"YTeste"};
 
   expect(calculateQuestion(dropdownRuleStruct, data)).toEqual(0.5);
 });
 
-test('Should get hundred percent of UploadRule', () => {
+test('return int 1 when evaluate UploadRule', () => {
   let data = {
     'documents': {'company_presentation': 'test'},
     'documents_1': {'company_presentation': 'test'}
@@ -77,7 +77,7 @@ test('Should get hundred percent of UploadRule', () => {
   expect(calculateQuestion(uploadRuleStruct, data)).toEqual(1);
 });
 
-test('Should get 50% percent of UploadRule', () => {
+test('return float 0.50 when evaluate UploadRule', () => {
   let data = {
     'documents': {'company_presentation': 'test'}
   };
@@ -85,7 +85,7 @@ test('Should get 50% percent of UploadRule', () => {
   expect(calculateQuestion(uploadRuleStruct, data)).toEqual(0.50);
 });
 
-test('Should calculte for all areas', () => {
+test('return percentages by area', () => {
   const expectedResult = [
     {"area": "Dados Iniciais", "percentage": 25},
     {"area": "Análise Quantitativa", "percentage": 25},

@@ -1,10 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.calculatePercentage = calculatePercentage;
-exports.calculateQuestion = calculateQuestion;
 var ROW_TEMPLATE_RULE = 'rowTemplateRule';
 var DEFAULT_RULE = 'defaultRule';
 var DROPDOWN_RULE = 'dropdownRule';
@@ -103,7 +98,7 @@ function calculateQuestion(structure, data) {
     }
   });
 
-  return showPercentage(structure.parent.rule, currentPercentage);
+  return currentPercentage;
 }
 
 function isValidQuestion(rule, data, question) {
@@ -119,14 +114,7 @@ function isValidQuestion(rule, data, question) {
   return false;
 }
 
-function showPercentage(rule, percentage) {
-  if (rule === DEFAULT_RULE) {
-    if (percentage >= 1) {
-      return percentage;
-    }
-
-    return 0;
-  }
-
-  return percentage;
-}
+module.exports = {
+  calculateQuestion: calculateQuestion,
+  calculatePercentage: calculatePercentage
+};

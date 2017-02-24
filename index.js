@@ -1,9 +1,9 @@
-const ROW_TEMPLATE_RULE = 'rowTemplateRule';
-const DEFAULT_RULE = 'defaultRule';
-const DROPDOWN_RULE = 'dropdownRule';
-const UPLOAD_RULE = 'uploadRule';
+var ROW_TEMPLATE_RULE = 'rowTemplateRule';
+var DEFAULT_RULE = 'defaultRule';
+var DROPDOWN_RULE = 'dropdownRule';
+var UPLOAD_RULE = 'uploadRule';
 
-export function calculatePercentage(mainStructure, data) {
+function calculatePercentage(mainStructure, data) {
   const result = [];
 
   mainStructure.survsAreaList.forEach(area => {
@@ -31,7 +31,7 @@ export function calculatePercentage(mainStructure, data) {
   return result;
 }
 
-export function calculateQuestion(structure, data) {
+function calculateQuestion(structure, data) {
   let requiredQuestions = structure.input.filter(question => {
     if (!(question.description_input || question).hasOwnProperty('required_question')) {
       return false;
@@ -97,7 +97,7 @@ export function calculateQuestion(structure, data) {
     }
   });
 
-  return showPercentage(structure.parent.rule, currentPercentage);
+  return currentPercentage;
 }
 
 function isValidQuestion(rule, data, question) {
@@ -113,14 +113,7 @@ function isValidQuestion(rule, data, question) {
   return false;
 }
 
-function showPercentage(rule, percentage) {
-  if (rule === DEFAULT_RULE) {
-    if (percentage >= 1) {
-      return percentage;
-    }
-
-    return  0;
-  }
-
-  return percentage;
-}
+module.exports = {
+  calculateQuestion,
+  calculatePercentage
+};
