@@ -1,5 +1,6 @@
 # Package to display surv completion percentual
 [![Build Status](https://travis-ci.org/fdexfinancing/completion-percentage.svg?branch=master)](https://travis-ci.org/fdexfinancing/completion-percentage)
+[![Code Climate](https://codeclimate.com/github/fdexfinancing/completion-percentage/badges/gpa.svg)](https://codeclimate.com/github/fdexfinancing/completion-percentage)
 
 ## JSON structure and rules description
 
