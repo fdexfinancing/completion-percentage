@@ -1,4 +1,5 @@
 # Package to display surv completion percentual
+[![Build Status](https://travis-ci.org/fdexfinancing/completion-percentage.svg?branch=master)](https://travis-ci.org/fdexfinancing/completion-percentage)
 
 ## JSON structure and rules description
 
