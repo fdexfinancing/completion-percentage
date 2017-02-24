@@ -1,6 +1,6 @@
 {
   "name": "fx-surv-percentage-calculator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Display surv completion percentage",
   "main": "index.js",
   "scripts": {
