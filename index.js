@@ -14,7 +14,14 @@ function calculatePercentage(mainStructure, data, options) {
   mainStructure.survsAreaList.forEach(area => {
     let areaPercentual = 0;
     let areaTotal = area.structure.all.length > 0 ? area.structure.all.length : 1;
-    let questionWeigth = 1 / areaTotal;
+    let requiredQuestions = area.structure.all.filter(summary => {
+      if (!summary.parent) {
+        return;
+      }
+
+      return summary.parent.rule !== undefined;
+    });
+    let questionWeigth = 1 / (requiredQuestions.length || areaTotal);
 
     area.structure.all.forEach(structure => {
       if (!structure.parent) {
@@ -36,23 +43,22 @@ function calculatePercentage(mainStructure, data, options) {
   return result;
 }
 
-function calculateQuestion(structure, data) {
-  let requiredQuestions = structure.input.filter(question => {
+function getRequiredQuestions(questions) {
+  return questions.filter(question => {
     if (!(question.description_input || question).hasOwnProperty('required_question')) {
       return false;
     }
 
     return question.required_question || question.description_input.required_question;
   });
+}
+
+function calculateQuestion(structure, data) {
+  let requiredQuestions = getRequiredQuestions(structure.input);
   let rule = structure.parent.rule;
   let requiredQuestionsTotal = structure.parent.min_required || requiredQuestions.length;
 
-  if (rule === DROPDOWN_RULE) {
-    requiredQuestionsTotal = requiredQuestions.length;
-  }
-
   requiredQuestionsTotal = requiredQuestionsTotal > 0 ? requiredQuestionsTotal : 1;
-
   let questionWeigth = 1 / requiredQuestionsTotal;
   let currentPercentage = 0;
 
@@ -100,7 +106,7 @@ function calculateQuestion(structure, data) {
     }
   });
 
-  return currentPercentage;
+  return currentPercentage > 1 ? 1 : currentPercentage;
 }
 
 function isValidQuestion(rule, data, question) {

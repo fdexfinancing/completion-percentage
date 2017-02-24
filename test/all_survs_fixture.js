@@ -3,8 +3,8 @@ module.exports = {
       "id":1,
       "title":"Questionário qualitativo",
       "observation":"IMPORTANTE: não é preciso responder todas as perguntas de uma única vez, para salvar as suas respostas basta \"clicar\" em \"SALVAR\" no final da página.",
-      "created_at":"2016-08-23T03:34:53.837Z",
-      "updated_at":"2016-08-23T03:34:53.837Z",
+      "created_at":"2016-08-10T21:49:58.356Z",
+      "updated_at":"2016-08-10T21:49:58.356Z",
       "is_active":true,
       "survsAreaList":[
          {
@@ -30,7 +30,7 @@ module.exports = {
             "id":2,
             "id_survs":1,
             "name":"Dados Iniciais",
-            "description":"<h2>Dados Iniciais</h2> <p>As informações descritas abaixo serão utilizadas no nosso algoritmo para verificar quantos potenciais financiadores existem para a operação que você deseja concluir</p>",
+            "description":"<h2>Dados Iniciais</h> <p>As informações descritas abaixo serão utilizadas no nosso algoritmo para verificar quantos potenciais financiadores existem para a operação que você deseja concluir</p>",
             "state":"data",
             "url":"dados-iniciais",
             "order":2,
@@ -46,8 +46,8 @@ module.exports = {
                         "type":"row_template",
                         "btn_title":"finalidade",
                         "min_rows":2,
-                        "min_required": 1,
-                        "rule": "rowTemplateRule",
+                        "min_required":1,
+                        "rule":"rowTemplateRule",
                         "example":{
                            "title":"",
                            "content":"Utilize os campos ao lado para descrever, de uma forma breve, o valor e a finalidade da captação."
@@ -59,9 +59,9 @@ module.exports = {
                            "label":"Recursos",
                            "type":"select",
                            "model":"utilization_$index.resource",
-                           "required_question": true,
                            "option":{
                               "src":"resources",
+                              "required_question":true,
                               "values":[
                                  {
                                     "index":1,
@@ -93,14 +93,14 @@ module.exports = {
                            "decimal":2,
                            "left_info":"R$",
                            "model":"utilization_$index.value",
-                           "required_question": true,
+                           "required_question":true
                         },
                         {
                            "col":"col-md-3",
                            "label":"Informação",
                            "type":"text",
                            "model":"utilization_$index.info",
-                           "required_question": true,
+                           "required_question":true
                         }
                      ],
                      "order":2
@@ -110,7 +110,7 @@ module.exports = {
                         "col":"col-md-12",
                         "force_label":true,
                         "label":"<h2>Descrição Da empresa e Performance Recente</h2> <p>Apresentar resumidamente a sua empresa incluindo informações como: </p>",
-                        "rule": "defaultRule"
+                        "rule":"defaultRule"
                      },
                      "input":[
                         {
@@ -118,10 +118,10 @@ module.exports = {
                            "label":"<span class=\"primary-blue\"> O histórico da empresa e um resumo de suas atividades e produtos/serviços.</span>",
                            "type":"textarea",
                            "model":"company_description",
-                           "required_question": true,
-                           "min_length": 200,
+                           "required_question":true,
+                           "min_length":200,
                            "example":{
-                              "title":"Exemplo de como responser",
+                              "title":"Exemplo de como responder",
                               "content":"Fundada em 1990 na cidade de São Paulo/SP, a Empresa Exemplo atua desde sua origem na fabricação de móveis para escritório. Atualmente, a empresa conta com 2 fábricas com área construída de 20.000 m², bem como 5 lojas próprias nas regiões Sul e Sudeste, suas regiões de maior atuação."
                            }
                         },
@@ -130,10 +130,10 @@ module.exports = {
                            "label":"<span class=\"primary-blue\"> Descrição das principais linhas de produtos destacando-se também a sua relevância sobre as receitas (% do total).</span>",
                            "type":"textarea",
                            "model":"company_description_products",
-                           "required_question": true,
-                           "min_length": 200,
+                           "required_question":true,
+                           "min_length":200,
                            "example":{
-                              "title":"Exemplo de como responser",
+                              "title":"Exemplo de como responder",
                               "content":"A Empresa Exemplo conta com um portfolio com 150 produtos, com destaque para estações de trabalho (responsáveis por 35% da receita), armários (20% da receita) e mesas de reunião (15% da receita)."
                            }
                         },
@@ -142,10 +142,10 @@ module.exports = {
                            "label":"<span class=\"primary-blue\"> Quais setores que a sua empresa atende.</span>",
                            "type":"textarea",
                            "model":"company_description_sector",
-                           "required_question": true,
-                           "min_length": 200,
+                           "required_question":true,
+                           "min_length":200,
                            "example":{
-                              "title":"Exemplo de como responser",
+                              "title":"Exemplo de como responder",
                               "content":"Os principais clientes da Empresa Exemplo são empresas privadas com mais de 50 funcionários, responsáveis por mais da metade do faturamento da companhia. Outro segmento de destaque são os órgãos públicos, que correspondem a 30% das receitas."
                            }
                         },
@@ -154,10 +154,10 @@ module.exports = {
                            "label":"<span class=\"primary-blue\"> Quais as suas vantagens competitivas em relação aos seus concorrentes.</span>",
                            "type":"textarea",
                            "model":"company_description_advantages",
-                           "required_question": true,
-                           "min_length": 200,
+                           "required_question":true,
+                           "min_length":200,
                            "example":{
-                              "title":"Exemplo de como responser",
+                              "title":"Exemplo de como responder",
                               "content":"A Empresa Exemplo é uma das maiores do segmento em sua região, e sua escala permite obter condições de negociação junto a seus fornecedores. Além disso, seu parque fabril foi renovado recentemente, dando flexibilidade ao processo produtivo e permitindo diversas opções de personalização."
                            }
                         }
@@ -168,7 +168,9 @@ module.exports = {
                      "parent":{
                         "col":"col-md-12",
                         "force_label":true,
-                        "label":"<p>Detalhar a performance ao longo dos últimos 2 anos, com foco nos:</p>"
+                        "label":"<p>Detalhar a performance ao longo dos últimos 2 anos, com foco nos:</p>",
+                        "rule":"defaultRule",
+                        "min_length":200
                      },
                      "input":[
                         {
@@ -176,6 +178,8 @@ module.exports = {
                            "label":"<span class=\"primary-blue\"> Fatores responsáveis pela variação das receitas.</span>",
                            "type":"textarea",
                            "model":"company_performance",
+                           "required_question":true,
+                           "min_length":200,
                            "example":{
                               "title":"Exemplo de como responder",
                               "content":"Receitas caíram em função da perda de um cliente estratégico. Queda foi compensada pelo aumento da participação no mercado de pequenas empresas, fruto de nova estratégica comercial."
@@ -186,6 +190,8 @@ module.exports = {
                            "label":"<span class=\"primary-blue\"> Fatores responsáveis pela variação da margem operacional.</span>",
                            "type":"textarea",
                            "model":"company_performance_margin",
+                           "required_question":true,
+                           "min_length":200,
                            "example":{
                               "title":"Exemplo de como responder",
                               "content":"Custos foram reduzidos em 6% devido à modernização do processo produtivo e melhoria no layout da fábrica."
@@ -196,6 +202,8 @@ module.exports = {
                            "label":"<span class=\"primary-blue\"> Fatores responsáveis pela variação na posição de caixa da empresa.</span>",
                            "type":"textarea",
                            "model":"company_performance_pos",
+                           "required_question":true,
+                           "min_length":200,
                            "example":{
                               "title":"Exemplo de como responder",
                               "content":"Abertura de duas novas lojas levou ao aumento nas despesas com vendas, em função da contratação de nova equipe."
@@ -208,14 +216,17 @@ module.exports = {
                      "parent":{
                         "col":"col-md-12",
                         "force_label":true,
-                        "label":"<p>Em termos de receitas, de resultados operacionais e geração de caixa:</p>"
+                        "label":"<p>Em termos de receitas, de resultados operacionais e geração de caixa:</p>",
+                        "rule":"defaultRule"
                      },
                      "input":[
                         {
                            "col":"col-md-8",
                            "label":"<span class=\"primary-blue\"> O que é possível esperar ao final do ano corrente? Qual a expectativa de receita e margens para este exercício?</span>",
                            "type":"textarea",
-                           "model":"company_projection"
+                           "model":"company_projection",
+                           "required_question":true,
+                           "min_length":200
                         }
                      ],
                      "order":5
@@ -227,7 +238,7 @@ module.exports = {
             "id":5,
             "id_survs":1,
             "name":"Análise Quantitativa",
-            "description":"<h2>Análise Quantitativa</h2> <p>Dado que estamos em contato constante com uma grande base de financiadores, estimamos quais os fatores quantitativos tornam uma operação de crédito mais atrativa para eles. Nosso objetivo aqui é fazer com que sua empresa se apresente da forma mais atrativa, e por isso sugerimos alguns aspectos qualitativos comuns às boas oportunidades.</p>",
+            "description":"<h2>Análise Quantitativa</h> <p>Dado que estamos em contato constante com uma grande base de financiadores, estimamos quais os fatores qualitativos tornam uma operação de crédito mais atrativa para eles. Nosso objetivo aqui é fazer com que sua empresa se apresente da forma mais atrativa, e por isso sugerimos alguns aspectos qualitativos comuns às boas oportunidades. <br /> Nas próximas três questões, você deve assinalar os itens que melhor definem a empresa e sua atividade econômica, bem como descrevê-los de maneira sucinta e clara</p>",
             "state":"quantitative",
             "url":"analise-quantitativa",
             "order":4,
@@ -242,9 +253,9 @@ module.exports = {
                         "label":"<h3>Clientes</h3><p>Quanto os seus 8 maiores clientes representaram do total das receitas da empresa no último ano?</p>",
                         "type":"row_template",
                         "btn_title":"cliente",
-                        "min_required": 8,
                         "min_rows":2,
-                        "rule": "rowTemplateRule"
+                        "min_required":8,
+                        "rule":"rowTemplateRule"
                      },
                      "input":[
                         {
@@ -252,7 +263,7 @@ module.exports = {
                            "label":"Cliente",
                            "type":"text",
                            "model":"customer_abc_$index.customer",
-                           "required_question": true
+                           "required_question":true
                         },
                         {
                            "col":"col-md-3",
@@ -261,7 +272,7 @@ module.exports = {
                            "decimal":2,
                            "right_info":"%",
                            "model":"customer_abc_$index.value",
-                           "required_question": true
+                           "required_question":true
                         }
                      ],
                      "order":2
@@ -272,9 +283,9 @@ module.exports = {
                         "label":"<h3>Fornecedores</h3><p>Quanto os seus 8 maiores fornencedores representaram do total das compras da empresa no último ano?</p>",
                         "type":"row_template",
                         "btn_title":"fornecedor",
-                        "min_required": 8,
                         "min_rows":2,
-                        "rule": "rowTemplateRule"
+                        "min_required":8,
+                        "rule":"rowTemplateRule"
                      },
                      "input":[
                         {
@@ -282,7 +293,7 @@ module.exports = {
                            "label":"Fornecedor",
                            "type":"text",
                            "model":"provider_abc_$index.provider",
-                           "required_question": true
+                           "required_question":true
                         },
                         {
                            "col":"col-md-3",
@@ -291,7 +302,7 @@ module.exports = {
                            "decimal":2,
                            "right_info":"%",
                            "model":"provider_abc_$index.value",
-                           "required_question": true
+                           "required_question":true
                         }
                      ],
                      "order":3
@@ -303,7 +314,7 @@ module.exports = {
             "id":4,
             "id_survs":1,
             "name":"Análise Qualitativa",
-            "description":"<h2>Análise Qualitativa</h2> <p>Dado que estamos em contato constante com uma grande base de financiadores, estimamos quais os fatores qualitativos tornam uma operação de crédito mais atrativa para eles. Nosso objetivo aqui é fazer com que sua empresa se apresente da forma mais atrativa, e por isso sugerimos alguns aspectos qualitativos comuns às boas oportunidades.</p>",
+            "description":"<h2>Análise Qualitativa</h> <p>Dado que estamos em contato constante com uma grande base de financiadores, estimamos quais os fatores qualitativos tornam uma operação de crédito mais atrativa para eles. Nosso objetivo aqui é fazer com que sua empresa se apresente da forma mais atrativa, e por isso sugerimos alguns aspectos qualitativos comuns às boas oportunidades. <br /> Nas próximas três questões, você deve assinalar os itens que melhor definem a empresa e sua atividade econômica, bem como descrevê-los de maneira sucinta e clara</p>",
             "state":"qualitative",
             "url":"analise-qualitativa",
             "order":5,
@@ -318,9 +329,8 @@ module.exports = {
                         "label":"<span class=\"icon\"><i class=\"fa fa-line-chart\"></i></span><span class=\"primary-blue\">Receitas, Crescimento e Oportunidades</span>",
                         "placeholder":"Favor escolha NO MÁXIMO 2 FATORES que melhor represente sua empresa.",
                         "type":"dropdown",
-                        "min_required": 1,
-                        "min_length": 120,
-                        "rule": "dropdownRule"
+                        "rule":"dropdownRule",
+                        "min_required":1
                      },
                      "input":[
                         {
@@ -331,7 +341,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.economic_activity_explanation",
-                              "ng-if":"vm.$1.revenue_situation.economic_activity"
+                              "ng-if":"vm.$1.revenue_situation.economic_activity",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -342,7 +354,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.bit_cyclic_explanation",
-                              "ng-if":"vm.$1.revenue_situation.bit_cyclic"
+                              "ng-if":"vm.$1.revenue_situation.bit_cyclic",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -353,7 +367,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.long_term_contract_explanation",
-                              "ng-if":"vm.$1.revenue_situation.long_term_contract"
+                              "ng-if":"vm.$1.revenue_situation.long_term_contract",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -364,7 +380,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.high_recurrence_explanation",
-                              "ng-if":"vm.$1.revenue_situation.high_recurrence"
+                              "ng-if":"vm.$1.revenue_situation.high_recurrence",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -375,7 +393,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.growth_explanation",
-                              "ng-if":"vm.$1.revenue_situation.growth"
+                              "ng-if":"vm.$1.revenue_situation.growth",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -386,7 +406,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.critical_products_explanation",
-                              "ng-if":"vm.$1.revenue_situation.critical_products"
+                              "ng-if":"vm.$1.revenue_situation.critical_products",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -397,7 +419,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.flexible_prices_explanation",
-                              "ng-if":"vm.$1.revenue_situation.flexible_prices"
+                              "ng-if":"vm.$1.revenue_situation.flexible_prices",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -410,8 +434,10 @@ module.exports = {
                               "model":"revenue_situation.revenue_diversity_explanation",
                               "ng-if":"vm.$1.revenue_situation.revenue_diversity",
                               "example":{
-                                 "title":"Exemplo de como responser",
-                                 "content":"Maior cliente foi responsável por 5% das receitas da empresa, que conta hoje com mais de 1.000 clientes ativos."
+                                 "title":"Exemplo de como responder",
+                                 "content":"Maior cliente foi responsável por 5% das receitas da empresa, que conta hoje com mais de 1.000 clientes ativos.",
+                                 "required_question":true,
+                                 "min_length":120
                               }
                            }
                         },
@@ -423,7 +449,9 @@ module.exports = {
                               "label":"",
                               "type":"textarea",
                               "model":"revenue_situation.competitive_advantage_explanation",
-                              "ng-if":"vm.$1.revenue_situation.competitive_advantage"
+                              "ng-if":"vm.$1.revenue_situation.competitive_advantage",
+                              "required_question":true,
+                              "min_length":120
                            }
                         }
                      ],
@@ -435,9 +463,8 @@ module.exports = {
                         "label":"<span class=\"icon\"><i class=\"fa fa-bar-chart-o\"></i></span><span class=\"primary-blue\">Margens & Indicadores Operacionais</span>",
                         "placeholder":"Favor escolha NO MÁXIMO 2 FATORES que melhor resumem a situação da empresa.",
                         "type":"dropdown",
-                        "min_required": 1,
-                        "min_length": 120,
-                        "rule": "dropdownRule"
+                        "rule":"dropdownRule",
+                        "min_required":1
                      },
                      "input":[
                         {
@@ -448,7 +475,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.high_margin_explanation",
-                              "ng-if":"vm.$1.operating_indicator.high_margin"
+                              "ng-if":"vm.$1.operating_indicator.high_margin",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -459,7 +488,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.stable_margin_explanation",
-                              "ng-if":"vm.$1.operating_indicator.stable_margin"
+                              "ng-if":"vm.$1.operating_indicator.stable_margin",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -470,7 +501,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.sell_increase_explanation",
-                              "ng-if":"vm.$1.operating_indicator.sell_increase"
+                              "ng-if":"vm.$1.operating_indicator.sell_increase",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -481,7 +514,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.cut_cost_explanation",
-                              "ng-if":"vm.$1.operating_indicator.cut_cost"
+                              "ng-if":"vm.$1.operating_indicator.cut_cost",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -492,7 +527,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.short_cycle_explanation",
-                              "ng-if":"vm.$1.operating_indicator.short_cycle"
+                              "ng-if":"vm.$1.operating_indicator.short_cycle",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -503,7 +540,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.positive_working_capital_explanation",
-                              "ng-if":"vm.$1.operating_indicator.positive_working_capital"
+                              "ng-if":"vm.$1.operating_indicator.positive_working_capital",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -514,7 +553,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.low_cost_explanation",
-                              "ng-if":"vm.$1.operating_indicator.low_cost"
+                              "ng-if":"vm.$1.operating_indicator.low_cost",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -525,7 +566,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.improve_result_explanation",
-                              "ng-if":"vm.$1.operating_indicator.improve_result"
+                              "ng-if":"vm.$1.operating_indicator.improve_result",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -536,7 +579,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"operating_indicator.top_five_explanation",
-                              "ng-if":"vm.$1.operating_indicator.top_five"
+                              "ng-if":"vm.$1.operating_indicator.top_five",
+                              "required_question":true,
+                              "min_length":120
                            }
                         }
                      ],
@@ -548,9 +593,8 @@ module.exports = {
                         "label":"<span class=\"icon\"><i class=\"fa fa-usd\"></i></span><span class=\"primary-blue\">Capital & Crédito</span>",
                         "placeholder":"Favor escolha NO MÁXIMO 2 FATORES que melhor resumem a situação da empresa.",
                         "type":"dropdown",
-                        "min_required": 1,
-                        "min_length": 120,
-                        "rule": "dropdownRule"
+                        "rule":"dropdownRule",
+                        "min_required":1
                      },
                      "input":[
                         {
@@ -561,7 +605,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.credit_rating_explanation",
-                              "ng-if":"vm.$1.capital_situation.credit_rating"
+                              "ng-if":"vm.$1.capital_situation.credit_rating",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -572,7 +618,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.quality_bancarizacion_explanation",
-                              "ng-if":"vm.$1.capital_situation.quality_bancarizacion"
+                              "ng-if":"vm.$1.capital_situation.quality_bancarizacion",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -583,7 +631,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.low_cost_explanation",
-                              "ng-if":"vm.$1.capital_situation.low_cost"
+                              "ng-if":"vm.$1.capital_situation.low_cost",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -594,7 +644,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.debit_short_term_explanation",
-                              "ng-if":"vm.$1.capital_situation.debit_short_term"
+                              "ng-if":"vm.$1.capital_situation.debit_short_term",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -605,7 +657,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.refinanced_debit_explanation",
-                              "ng-if":"vm.$1.capital_situation.refinanced_debit"
+                              "ng-if":"vm.$1.capital_situation.refinanced_debit",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -616,7 +670,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.other_financing_products_explanation",
-                              "ng-if":"vm.$1.capital_situation.other_financing_products"
+                              "ng-if":"vm.$1.capital_situation.other_financing_products",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -627,7 +683,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.capital_contribution_explanation",
-                              "ng-if":"vm.$1.capital_situation.capital_contribution"
+                              "ng-if":"vm.$1.capital_situation.capital_contribution",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -638,7 +696,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.profissional_management_explanation",
-                              "ng-if":"vm.$1.capital_situation.profissional_management"
+                              "ng-if":"vm.$1.capital_situation.profissional_management",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -649,7 +709,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.low_investiment_need_explanation",
-                              "ng-if":"vm.$1.capital_situation.low_investiment_need"
+                              "ng-if":"vm.$1.capital_situation.low_investiment_need",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -660,7 +722,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.long_financing_explanation",
-                              "ng-if":"vm.$1.capital_situation.long_financing"
+                              "ng-if":"vm.$1.capital_situation.long_financing",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -671,7 +735,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.need_money_explanation",
-                              "ng-if":"vm.$1.capital_situation.need_money"
+                              "ng-if":"vm.$1.capital_situation.need_money",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -682,7 +748,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.restructuring_process_explanation",
-                              "ng-if":"vm.$1.capital_situation.restructuring_process"
+                              "ng-if":"vm.$1.capital_situation.restructuring_process",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -693,7 +761,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.guarantor_company_explanation",
-                              "ng-if":"vm.$1.capital_situation.guarantor_company"
+                              "ng-if":"vm.$1.capital_situation.guarantor_company",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -704,7 +774,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.guarantor_shareholder_explanation",
-                              "ng-if":"vm.$1.capital_situation.guarantor_shareholder"
+                              "ng-if":"vm.$1.capital_situation.guarantor_shareholder",
+                              "required_question":true,
+                              "min_length":120
                            }
                         },
                         {
@@ -715,7 +787,9 @@ module.exports = {
                               "label":"Explicação",
                               "type":"textarea",
                               "model":"capital_situation.rj_plan_explanation",
-                              "ng-if":"vm.$1.capital_situation.rj_plan"
+                              "ng-if":"vm.$1.capital_situation.rj_plan",
+                              "required_question":true,
+                              "min_length":120
                            }
                         }
                      ],
@@ -743,7 +817,7 @@ module.exports = {
             "id":7,
             "id_survs":1,
             "name":"Documentos",
-            "description":"<h2>Documentos</h2> <p>Os documentos listados abaixo são requeridos pelos financiadores participantes da plataforma na maior parte dos casos. Para facilitar o processo de análise das partes envolvidas na listagem, favor realizar upload abaixo</p>",
+            "description":"<h2>Documentos</h> <p>Os documentos listados abaixo são requeridos pelos financiadores participantes da plataforma na maior parte dos casos. Para facilitar o processo de análise das partes envolvidas na listagem, favor realizar upload abaixo</p>",
             "state":"survDocuments",
             "url":"documentos",
             "order":7,
@@ -757,14 +831,13 @@ module.exports = {
                         "col":"col-md-8",
                         "label":"",
                         "type":"upload_list",
-                        "rule": "uploadRule"
+                        "rule":"uploadRule"
                      },
                      "input":[
                         {
                            "label":"Apresentação Institucional da Empresa",
                            "type":"upload",
                            "model":"documents.company_presentation",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -775,13 +848,13 @@ module.exports = {
                                  "value":false
                               }
                            ],
-                           "id_document_type":"35"
+                           "id_document_type":"35",
+                           "required_question":true
                         },
                         {
                            "label":"Mini currículo dos principais executivos",
                            "type":"upload",
                            "model":"documents.curriculum_board",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -792,13 +865,13 @@ module.exports = {
                                  "value":false
                               }
                            ],
-                           "id_document_type":"29"
+                           "id_document_type":"29",
+                           "required_question":true
                         },
                         {
                            "label":"Última versão do Contrato Social / Estatuto Social",
                            "type":"upload",
                            "model":"documents.social_contract",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -809,13 +882,13 @@ module.exports = {
                                  "value":false
                               }
                            ],
-                           "id_document_type":"30"
+                           "id_document_type":"30",
+                           "required_question":true
                         },
                         {
                            "label":"Balanço Patrimonial de ",
                            "type":"upload",
                            "model":"documents.balance_sheet_1",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -827,13 +900,13 @@ module.exports = {
                               }
                            ],
                            "id_document_type":"1",
-                           "position":"0"
+                           "position":"0",
+                           "required_question":true
                         },
                         {
                            "label":"Balanço Patrimonial de ",
                            "type":"upload",
                            "model":"documents.balance_sheet_1",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -845,13 +918,13 @@ module.exports = {
                               }
                            ],
                            "id_document_type":"1",
-                           "position":"1"
+                           "position":"1",
+                           "required_question":true
                         },
                         {
                            "label":"Balanço Patrimonial de ",
                            "type":"upload",
                            "model":"documents.balance_sheet_1",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -863,13 +936,13 @@ module.exports = {
                               }
                            ],
                            "id_document_type":"1",
-                           "position":"2"
+                           "position":"2",
+                           "required_question":true
                         },
                         {
                            "label":"DRE de ",
                            "type":"upload",
                            "model":"documents.balance_sheet_2",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -881,13 +954,13 @@ module.exports = {
                               }
                            ],
                            "id_document_type":"2",
-                           "position":"0"
+                           "position":"0",
+                           "required_question":true
                         },
                         {
                            "label":"DRE de ",
                            "type":"upload",
                            "model":"documents.balance_sheet_2",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -899,13 +972,13 @@ module.exports = {
                               }
                            ],
                            "id_document_type":"2",
-                           "position":"1"
+                           "position":"1",
+                           "required_question":true
                         },
                         {
                            "label":"DRE de ",
                            "type":"upload",
                            "model":"documents.balance_sheet_2",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -917,13 +990,13 @@ module.exports = {
                               }
                            ],
                            "id_document_type":"2",
-                           "position":"2"
+                           "position":"2",
+                           "required_question":true
                         },
                         {
                            "label":"Abertura do endividamento bancário (incluir fonte, valor, taxa, prazo, sistema de amortização)",
                            "type":"upload",
                            "model":"documents.bank_debit",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -934,13 +1007,13 @@ module.exports = {
                                  "value":false
                               }
                            ],
-                           "id_document_type":"24"
+                           "id_document_type":"24",
+                           "required_question":true
                         },
                         {
                            "label":"Faturamento mensal dos últimos 36 meses",
                            "type":"upload",
                            "model":"documents.revenues",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -951,13 +1024,13 @@ module.exports = {
                                  "value":false
                               }
                            ],
-                           "id_document_type":"23"
+                           "id_document_type":"23",
+                           "required_question":true
                         },
                         {
                            "label":"Declaração de Imposto de Renda (Pessoa Jurídica)",
                            "type":"upload",
                            "model":"documents.ir_decalration",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -968,13 +1041,13 @@ module.exports = {
                                  "value":false
                               }
                            ],
-                           "id_document_type":"32"
+                           "id_document_type":"32",
+                           "required_question":true
                         },
                         {
                            "label":"Declaração de Imposto de Renda (Sócios)",
                            "type":"upload",
                            "model":"documents.ir_decalration_partners",
-                           "required_question": true,
                            "option":[
                               {
                                  "label":"Documento enviado",
@@ -985,7 +1058,8 @@ module.exports = {
                                  "value":false
                               }
                            ],
-                           "id_document_type":"33"
+                           "id_document_type":"33",
+                           "required_question":true
                         }
                      ],
                      "order":1
