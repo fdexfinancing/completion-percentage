@@ -90,10 +90,8 @@ function calculateQuestion(structure, data) {
         }
       }
     } else {
-      if (data[questionArr[0]]) {
-        if (isValidQuestion(rule, data[questionArr[0]], question)) {
-          currentPercentage += questionWeigth;
-        }
+      if (data[questionArr[0]] && isValidQuestion(rule, data[questionArr[0]], question)) {
+        currentPercentage += questionWeigth;
       }
     }
   });
@@ -113,6 +111,8 @@ function isValidQuestion(rule, data, question) {
 
   return false;
 }
+
+window.module = window.module || {};
 
 module.exports = {
   calculateQuestion: calculateQuestion,
