@@ -5,8 +5,13 @@ var DEFAULT_RULE = 'defaultRule';
 var DROPDOWN_RULE = 'dropdownRule';
 var UPLOAD_RULE = 'uploadRule';
 
-function calculatePercentage(mainStructure, data) {
+var defaultOptions = {
+  decimal: 0
+};
+
+function calculatePercentage(mainStructure, data, options) {
   var result = [];
+  options = options || defaultOptions;
 
   mainStructure.survsAreaList.forEach(function (area) {
     var areaPercentual = 0;
@@ -110,6 +115,14 @@ function isValidQuestion(rule, data, question) {
   }
 
   return false;
+}
+
+function decimalPercentage(value, decimal) {
+  if (value <= 0) {
+    return 0;
+  }
+
+  return Number(value.toFixed(decimal));
 }
 
 window.module = window.module || {};

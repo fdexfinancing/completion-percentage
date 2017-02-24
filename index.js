@@ -3,8 +3,13 @@ var DEFAULT_RULE = 'defaultRule';
 var DROPDOWN_RULE = 'dropdownRule';
 var UPLOAD_RULE = 'uploadRule';
 
-function calculatePercentage(mainStructure, data) {
+const defaultOptions = {
+  decimal: 0
+};
+
+function calculatePercentage(mainStructure, data, options) {
   const result = [];
+  options = options || defaultOptions;
 
   mainStructure.survsAreaList.forEach(area => {
     let areaPercentual = 0;
@@ -22,7 +27,7 @@ function calculatePercentage(mainStructure, data) {
     if (area.structure.all[0].parent) {
       result.push({
         area: area.name,
-        percentage: (questionWeigth * areaPercentual) * 100
+        percentage: Number(((questionWeigth * areaPercentual) * 100).toFixed(options.decimal))
       });
     }
 
