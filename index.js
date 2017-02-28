@@ -54,6 +54,11 @@ function getRequiredQuestions(questions) {
 }
 
 function calculateQuestion(structure, data) {
+  
+  if (Object.keys(data) === 0) {
+    return 0;
+  }
+
   let requiredQuestions = getRequiredQuestions(structure.input);
   let rule = structure.parent.rule;
   let requiredQuestionsTotal = structure.parent.min_required || requiredQuestions.length;

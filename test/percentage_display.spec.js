@@ -90,15 +90,15 @@ test('return float 0.50 when evaluate UploadRule', () => {
   expect(calculateQuestion(uploadRuleStruct, data)).toEqual(0.50);
 });
 
-test('return percentages by area', () => {
+test('return empty structure for void data', () => {
   const expectedResult = [
-    {"area": "Dados Iniciais", "percentage": 25},
-    {"area": "Análise Quantitativa", "percentage": 25},
+    {"area": "Dados Iniciais", "percentage": 0},
+    {"area": "Análise Quantitativa", "percentage": 0},
     {"area": "Análise Qualitativa", "percentage": 0},
     {"area": "Documentos", "percentage": 0}
   ];
 
-  const data = {"utilization_1":{"resource":{"index":1,"display":"Capital de giro"},"value":10000,"info":"Teste"},"utilization_2":{"resource":{"index":2,"display":"Pagamento de dívidas que estão vencendo"},"value":110000,"info":"Teste"},"utilization_3":{"resource":{"index":3,"display":"Pré-pagamento de dívidas muito onerosas"},"value":10000,"info":"Teste"},"company_description":"Teste","company_description_products":"Teste 1234","company_description_sector":"Teste","company_description_advantages":"Teste","company_performance":"Teste","company_performance_margin":"Teste","company_performance_pos":"Teste","company_projection":"Teste","customer_abc_1":{"customer":"Cliente 1","value":1000},"customer_abc_2":{"customer":"Cliente 2","value":10099.99},"provider_abc_1":{"provider":"Fornecedor 1","value":100000},"provider_abc_2":{"provider":"Fornecedor 2","value":19999.99},"revenue_situation":{"economic_activity":true,"bit_cyclic":true,"economic_activity_explanation":"Dropdown exemplo","bit_cyclic_explanation":"Dropdown exemplo"},"other_situation":"YTeste"};
+  const data = {};
 
   expect(calculatePercentage(allSurvsStruct.result, data)).toEqual(expectedResult);
 });
