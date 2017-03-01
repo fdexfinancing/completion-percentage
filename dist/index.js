@@ -56,7 +56,7 @@ function getRequiredQuestions(questions) {
 
 function calculateQuestion(structure, data) {
 
-  if (Object.keys(data) === 0) {
+  if (!data || data === undefined || Object.keys(data) === 0) {
     return 0;
   }
 

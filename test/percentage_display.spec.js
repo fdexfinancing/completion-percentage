@@ -101,6 +101,8 @@ test('return empty structure for void data', () => {
   const data = {};
 
   expect(calculatePercentage(allSurvsStruct.result, data)).toEqual(expectedResult);
+  expect(calculatePercentage(allSurvsStruct.result, undefined)).toEqual(expectedResult);
+  expect(calculatePercentage(allSurvsStruct.result)).toEqual(expectedResult);
 });
 
 test('return percentages by area', () => {
