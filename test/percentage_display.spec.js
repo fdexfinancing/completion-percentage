@@ -117,3 +117,65 @@ test('return percentages by area', () => {
 
   expect(calculatePercentage(allSurvsStruct.result, data.info)).toEqual(expectedResult);
 });
+
+test('return percentage where data is invalid', () => {
+
+  let expectedResult = [
+    {"area": "Dados Iniciais", "percentage": 0},
+    {"area": "Análise Quantitativa", "percentage": 0},
+    {"area": "Análise Qualitativa", "percentage": 0},
+    {"area": "Documentos", "percentage": 0}
+  ];
+
+  let data = {
+   "result":{
+      "id":292,
+      "id_survs":1,
+      "id_survs_status":1,
+      "id_company":631,
+      "info":{
+         "revenue_situation":{
+            "bit_cyclic":false,
+            "bit_cyclic_explanation":"aaaaaa",
+            "economic_activity":true,
+            "economic_activity_explanation":"eeeee",
+            "long_term_contract":true,
+            "long_term_contract_explanation":"asdas"
+         },
+         "operating_indicator":{
+            "high_margin":true,
+            "high_margin_explanation":"abcd",
+            "stable_margin":true
+         },
+         "capital_situation":{
+            "credit_rating":true,
+            "quality_bancarizacion":true,
+            "guarantor_company":true,
+            "credit_rating_explanation":"zdsasdas",
+            "quality_bancarizacion_explanation":"asdas",
+            "guarantor_company_explanation":"asdas"
+         },
+         "utilization_1":{
+            "resource":{
+               "index":4,
+               "display":"Investimento em expansão"
+            },
+            "value":123213.21,
+            "info":"12321321"
+         }
+      },
+      "created_at":"2017-02-23T17:58:07.260Z",
+      "updated_at":"2017-02-23T17:58:07.260Z",
+      "statusObj":{
+         "id":1,
+         "status":"Em andamento",
+         "created_at":"2015-12-22T19:18:09.840Z",
+         "updated_at":"2015-12-22T19:18:09.840Z",
+         "is_active":true,
+         "status_description":"Em andamento"
+      }
+   }
+};
+
+  expect(calculatePercentage(allSurvsStruct.result, data.info)).toEqual(expectedResult);
+});

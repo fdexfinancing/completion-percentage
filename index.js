@@ -116,6 +116,10 @@ function calculateQuestion(structure, data) {
 
 function isValidQuestion(rule, data, question) {
 
+  if (!data) {
+    return false;
+  }
+
   if (rule === DEFAULT_RULE || rule === DROPDOWN_RULE) {
     return data.length >= (question.min_length || question.description_input.min_length);
   }
