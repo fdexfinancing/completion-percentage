@@ -121,7 +121,7 @@ function isValidQuestion(rule, data, question) {
   }
 
   if (rule === DEFAULT_RULE || rule === DROPDOWN_RULE) {
-    return data.length >= (question.min_length || question.description_input.min_length);
+    return (data && data.length) >= (question.min_length || question.description_input.min_length);
   }
 
   if (rule === ROW_TEMPLATE_RULE || rule === UPLOAD_RULE) {
