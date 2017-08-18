@@ -2,6 +2,7 @@ var ROW_TEMPLATE_RULE = 'rowTemplateRule';
 var DEFAULT_RULE = 'defaultRule';
 var DROPDOWN_RULE = 'dropdownRule';
 var UPLOAD_RULE = 'uploadRule';
+var SELECT_RULE = 'selectRule';
 
 const defaultOptions = {
   decimal: 0
@@ -124,7 +125,7 @@ function isValidQuestion(rule, data, question) {
     return (data && data.length) >= (question.min_length || question.description_input.min_length);
   }
 
-  if (rule === ROW_TEMPLATE_RULE || rule === UPLOAD_RULE) {
+  if (rule === ROW_TEMPLATE_RULE || rule === UPLOAD_RULE || rule == SELECT_RULE) {
     return data || data > 0;
   }
 
