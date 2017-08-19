@@ -123,8 +123,14 @@ function isValidQuestion(rule, data, question) {
     return false;
   }
 
+  if (rule == DROPDOWN_RULE) {
+    if (data === true  && question.min_length === true) {
+      return data;
+    }
+  }
+
   if (rule === DEFAULT_RULE || rule === DROPDOWN_RULE) {
-    return (data && data.length) >= (question.min_length || question.description_input.min_length);
+    return (data && data.length) >= (question.min_length || (question.description_input && question.description_input.min_length));
   }
 
   if (rule === ROW_TEMPLATE_RULE || rule === UPLOAD_RULE || rule == SELECT_RULE) {
