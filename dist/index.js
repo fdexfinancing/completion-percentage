@@ -100,7 +100,9 @@ function calculateQuestion(structure, data) {
           return false;
         }
 
-        _questionData = data[questionArr[0]][(question.description_input || question).model.split('.')[1]];
+        if (question.description_input) {
+          _questionData = data[questionArr[0]][(question.description_input || question).model.split('.')[1]];
+        }
 
         if (isValidQuestion(rule, _questionData, question)) {
           currentPercentage += questionWeigth;
